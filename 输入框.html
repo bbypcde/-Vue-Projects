@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+           color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg" @keyup="filterArr()">
+        <button @click="fn()">add</button>
+        <ul>
+            <li v-for="obj in showArr" :class="{red:obj.isRed}" @click="change(obj)">{{obj.name}}</li>
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+     var vm=new Vue({
+         el:"#app",
+         data:{
+             arr:[],
+             msg:"",
+             showArr:[]
+         },
+         methods:{
+            fn:function(){
+                var obj={
+                    name:this.msg,
+                    isRed:false
+                }
+                this.arr.push(obj);
+                this.msg="";
+                this.arr.sort(function(x,y){
+                    return x.name>y.name;
+                });
+                this.showArr=this.arr;
+            },
+            //change:function(o){}可以简写为change(o){}
+             change(o){
+                o.isRed=!o.isRed;
+            },
+            filterArr:function(){
+               this.showArr= this.arr.filter((obj)=>{
+                    return obj.name.includes(this.msg);
+                });
+                console.log("zheshi"+this.arr);
+                console.log("youshi"+this.showArr);
+            }
+
+
+            
+         }
+       
+
+     });
+    </script>
+</body>
+</html>

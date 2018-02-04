@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .aa{
+            background:red;
+        }
+        .bb{
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+            <button @click="fn">click</button>
+            <!-- <div  :class="{aa:isAa}">aaaaaaa</div> -->
+            <div :class="[red]">bbbbb</div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            isAa:true,
+            red:""
+            
+        },
+        methods:{
+            // fn:function(){
+            //     this.isAa=!this.isAa;
+                
+            // }
+            fn:function(){
+                if(this.red){
+                    this.red="";
+                }
+                else{
+                    this.red="aa";
+                }
+            }
+        }
+    })
+    
+    </script>
+</body>
+</html>

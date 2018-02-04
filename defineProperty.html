@@ -1,0 +1,34 @@
+<!-- 此为vue双向绑定的方法 Object.defineProperty() -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <input type="text" id="ipt1">
+    </div>
+    <script>
+       obj={
+           msg:"hahhaah"
+       } 
+       Object.defineProperty(obj,"msg",{
+           set:function(val){
+               document.getElementById("div1").innerHTML=val;
+           }
+       },{
+           get:function(val){
+            val =document.getElementById("div1").innerHTML;
+           }
+       });
+       var oI=document.getElementById("ipt1");
+       oI.onkeyup=function(){
+           obj.msg=this.value;
+        //    return(obj.msg);
+       }
+    </script>
+</body>
+</html>

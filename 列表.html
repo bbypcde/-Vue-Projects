@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        li{
+            margin-top:10px;
+            width: 100px;
+            height: 25px;
+            background: red;
+
+        }
+        .aa{
+            margin-top:10px;
+            width: 100px;
+            height: 25px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+            <ul>
+            <li v-for="obj in arr" :class="{aa:obj.isAa}" @click="fn(obj)">{{obj.name}}--{{obj.price}}</li>
+            </ul>
+            <span>total{{num}}</span>
+    </div>
+   
+    
+    <script src="vue.js"></script>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                arr:
+                [
+                    {name:"aa",price:"111",isAa:false},
+                    {name:"bb",price:"222",isAa:false},
+                    {name:"ccc",price:"333",isAa:false},
+                    {name:"ddd",price:"444",isAa:false}
+               ],
+               num:0
+               
+            },
+            methods:{
+                fn:function(o){
+                    o.isAa=!o.isAa;
+                    if(o.isAa){
+                        this.num+=parseInt(o.price);
+                    }
+                    else{
+                        this.num-=o.price;
+                    }
+                }
+            }
+        });
+    
+    
+    </script>
+</body>
+</html>
